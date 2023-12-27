@@ -36,3 +36,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Anaconda Libs
+dsj-ml-agents-env/Lib/*
