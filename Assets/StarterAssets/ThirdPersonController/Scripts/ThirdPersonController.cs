@@ -2,6 +2,7 @@
 using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using TMPro;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -110,6 +111,40 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+        public TMP_Text  ScoreText; // Referencia al TextMeshPro que muestra el puntaje
+        private int score = 0;
+        private void OnTriggerEnter(Collider other)
+        {
+            // Verifica si el jugador toca un objeto con el tag "Obstacle"
+            if (other.CompareTag("Obstacle"))
+            {
+                PlayerDeath();
+            }
+            // Verifica si el jugador toca un objeto con el tag "Coin"
+            else if (other.CompareTag("Coin"))
+            {
+                CollectCoin(other.gameObject);
+            }
+        }
+        public void PlayerDeath()
+        {
+            // Reinicia la escena
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        public void RestartPlayer()
+{
+            PlayerDeath(); // Llama al método existente
+}
+        private void CollectCoin(GameObject coin)
+        {
+            // Aumenta el puntaje
+            score++;
+            // Actualiza el TextMeshPro con el nuevo puntaje
+            ScoreText.text = "Score: " + score;
+            // Desactiva el objeto "Coin" al ser recogido
+            // (asumiendo que "Coin" es el nombre del objeto y no solo el tag)
+            Destroy(coin);
+        }
 
         private bool IsCurrentDeviceMouse
         {

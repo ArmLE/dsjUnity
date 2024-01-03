@@ -3,7 +3,7 @@
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] Transform player;
-    float distanceToPlayer = 15.0f;
+    float distanceToPlayer = 10.0f;
 
     private void Update()
     {

@@ -20,8 +20,8 @@ public class spawner : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float minX = -9.0f;
-        float maxX = 17.0f;
+        float minX = -7.0f;
+        float maxX = 14.0f;
         float minZ = -200.0f;
         float maxZ = 230.0f;
 

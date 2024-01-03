@@ -1,20 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using StarterAssets;
 
 public class Obstacle : MonoBehaviour {
 
-    PlayerMovement playerMovement;
+    ThirdPersonController playerMovement;
 
 	private void Start () {
-        playerMovement = GameObject.FindObjectOfType<PlayerMovement>();
+        playerMovement = GameObject.FindObjectOfType<ThirdPersonController>();
 	}
 
-    private void OnCollisionEnter (Collision collision)
-    {
-        if (collision.gameObject.name == "Player") {
+   public void OnTriggerEnter(Collider other)
+        {
+        if (other.gameObject.CompareTag("Player")) // Usar CompareTag para comparar tags
+        {
             // Kill the player
-            playerMovement.Die();
+            playerMovement.PlayerDeath(); // Llama al nuevo método de reinicio
         }
     }
 

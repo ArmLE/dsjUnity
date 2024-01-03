@@ -169,7 +169,6 @@ namespace StarterAssets
                 Move();
                 SeekPlayer();
             }
-            SeekPlayer();
         }
         private void SeekPlayer()
         {
