@@ -3,6 +3,7 @@
 public class BasicRigidBodyPush : MonoBehaviour
 {
 	public LayerMask pushLayers;
+	[SerializeField] Rigidbody rb;
 	public bool canPush;
 	[Range(0.5f, 5f)] public float strength = 1.1f;
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -159,6 +160,11 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            if (transform.position.z >= 235.0f)
+            {
+                // Cambiar a la escena2
+                SceneManager.LoadScene("Nivel2");
+            }
         }
 
         private void LateUpdate()
@@ -269,7 +275,12 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                     new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+            // Limit the player's position in the X-axis
+            float clampedX = Mathf.Clamp(transform.position.x, -6f, 17f);
+            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+
 
             // update animator if using character
             if (_hasAnimator)
