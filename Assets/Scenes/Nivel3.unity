@@ -228,7 +228,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 9198798515388398597, guid: fc74bf384f0bc004b95c601354d734e1, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9198798515388398597, guid: fc74bf384f0bc004b95c601354d734e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -389,6 +389,7 @@ MonoBehaviour:
   pushLayers:
     serializedVersion: 2
     m_Bits: 0
+  rb: {fileID: 0}
   canPush: 0
   strength: 1.1
 --- !u!114 &836129656
@@ -403,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e54e5a728a9234ab24fcf1460ed8a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 2
+  MoveSpeed: 5
   SprintSpeed: 5.335
   RotationSmoothTime: 0.12
   SpeedChangeRate: 10
@@ -427,6 +428,9 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  ScoreText: {fileID: 0}
+  xmin: -20
+  xmax: 100
 --- !u!114 &836129657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -912,7 +916,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7934143839010495745, guid: f46e53ac2dd249545a02532bf83c298c, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7934143839010495745, guid: f46e53ac2dd249545a02532bf83c298c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -999,6 +1003,7 @@ MonoBehaviour:
   pushLayers:
     serializedVersion: 2
     m_Bits: 0
+  rb: {fileID: 0}
   canPush: 0
   strength: 1.1
 --- !u!114 &1331908221
@@ -1037,6 +1042,9 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  ScoreText: {fileID: 0}
+  xmin: 0
+  xmax: 0
 --- !u!114 &1331908222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,6 +1420,7 @@ MonoBehaviour:
   pushLayers:
     serializedVersion: 2
     m_Bits: 0
+  rb: {fileID: 0}
   canPush: 0
   strength: 1.1
 --- !u!114 &1771087816
@@ -1450,6 +1459,9 @@ MonoBehaviour:
   BottomClamp: -30
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  ScoreText: {fileID: 0}
+  xmin: 0
+  xmax: 0
 --- !u!114 &1771087817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,52 +1510,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
---- !u!1 &1861971718
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1861971720}
-  - component: {fileID: 1861971719}
-  m_Layer: 0
-  m_Name: SpawnerCube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1861971719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861971718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 133ab86bbebd62c4e91ee734800bdc27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cubePrefab: {fileID: 645515757440925725, guid: 8307a7e4c35671949b1eb957465e14c6, type: 3}
-  numeroCubos: 5
---- !u!4 &1861971720
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861971718}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1979352518
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class spawnerObstacle : MonoBehaviour
+public class spawnerNPCsecond : MonoBehaviour
 {
     public GameObject cubePrefab;
     public int numeroCubos = 5;
@@ -22,10 +22,11 @@ public class spawnerObstacle : MonoBehaviour
 
     Vector3 GetRandomSpawnPosition()
     {
-        float minX = -7.0f;
-        float maxX = 14.0f;
-        float minZ = -200.0f;
-        float maxZ = 230.0f;
+        
+        float minX = -20.0f;
+        float maxX = 50.0f;
+        float minZ = -75.0f;
+        float maxZ = 70.0f;
 
         float x = Mathf.Round(Random.Range(minX, maxX) / distanciaEntreCubos) * distanciaEntreCubos;
         float y = 0.0f; // Mantén la coordenada Y en 0 inicialmente

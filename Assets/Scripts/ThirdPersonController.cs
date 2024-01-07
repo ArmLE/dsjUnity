@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using TMPro;
 #endif
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
@@ -12,7 +14,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
     [RequireComponent(typeof(PlayerInput))]
 #endif
-    public class PlayerManager : MonoBehaviour
+    public class ThirdPersonController : MonoBehaviour
     {
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
@@ -30,7 +32,7 @@ namespace StarterAssets
 
         public AudioClip LandingAudioClip;
         public AudioClip[] FootstepAudioClips;
-        [Range(0, 1)] public float FootstepAudioVolume = 0.5f;
+        [Range(0, 2)] public float FootstepAudioVolume = 0.5f;
 
         [Space(10)]
         [Tooltip("The height the player can jump")]
@@ -86,6 +88,7 @@ namespace StarterAssets
         private float _rotationVelocity;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
+        
 
         // timeout deltatime
         private float _jumpTimeoutDelta;
@@ -109,6 +112,54 @@ namespace StarterAssets
         private const float _threshold = 0.01f;
 
         private bool _hasAnimator;
+        public TMP_Text  ScoreText; // Referencia al TextMeshPro que muestra el puntaje
+        private int score = 0;
+        public float xmin;
+        public float xmax;
+        public float cambioescena;
+        public string nivel1="Nivel1";
+        public string nivel2="Nivel2";
+        public string nivel3="Nivel3";
+        private void OnTriggerEnter(Collider other)
+        {
+            // Verifica si el jugador toca un objeto con el tag "Obstacle"
+            if (other.CompareTag("Obstacle") )
+            {
+                PlayerDeath();
+            }
+            if (other.CompareTag("npc1") )
+            {
+                PlayerDeath();
+            }
+            if (other.CompareTag("npc2") )
+            {
+                PlayerDeath();
+            }
+            // Verifica si el jugador toca un objeto con el tag "Coin"
+            else if (other.CompareTag("Coin"))
+            {
+                CollectCoin(other.gameObject);
+            }
+        }
+        public void PlayerDeath()
+        {
+            // Reinicia la escena
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+        public void RestartPlayer()
+{
+            PlayerDeath(); // Llama al método existente
+}
+        private void CollectCoin(GameObject coin)
+        {
+            // Aumenta el puntaje
+            score++;
+            // Actualiza el TextMeshPro con el nuevo puntaje
+            ScoreText.text = "Score: " + score;
+            // Desactiva el objeto "Coin" al ser recogido
+            // (asumiendo que "Coin" es el nombre del objeto y no solo el tag)
+            Destroy(coin);
+        }
 
         private bool IsCurrentDeviceMouse
         {
@@ -159,6 +210,17 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
+            if (transform.position.z >= cambioescena)
+            {
+                if(SceneManager.GetActiveScene().name==nivel1){
+                    // Cambiar a la escena2
+                    SceneManager.LoadScene("Nivel2");
+                }
+                if(SceneManager.GetActiveScene().name==nivel2){
+                    // Cambiar a la escena2
+                    SceneManager.LoadScene("Nivel3");
+                }
+            }
         }
 
         private void LateUpdate()
@@ -211,7 +273,7 @@ namespace StarterAssets
                 _cinemachineTargetYaw, 0.0f);
         }
 
-        private void Move()
+        public void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
@@ -269,7 +331,12 @@ namespace StarterAssets
 
             // move the player
             _controller.Move(targetDirection.normalized * (_speed * Time.deltaTime) +
-                             new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+                     new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+
+            // Limit the player's position in the X-axis
+            float clampedX = Mathf.Clamp(transform.position.x, xmin, xmax);
+            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+
 
             // update animator if using character
             if (_hasAnimator)
