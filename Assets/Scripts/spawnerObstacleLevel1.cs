@@ -25,8 +25,8 @@ public class spawnerObstacleLevel1 : MonoBehaviour
         
         float minX = -20.0f;
         float maxX = 50.0f;
-        float minZ = -75.0f;
-        float maxZ = 70.0f;
+        float minZ = -46.0f;
+        float maxZ = 42.0f;
 
         float x = Mathf.Round(Random.Range(minX, maxX) / distanciaEntreCubos) * distanciaEntreCubos;
         float y = 0.0f; // Mantén la coordenada Y en 0 inicialmente

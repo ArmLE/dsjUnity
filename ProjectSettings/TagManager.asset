@@ -9,6 +9,7 @@ TagManager:
   - npc2
   - Obstacle
   - Coin
+  - npc3
   layers:
   - Default
   - TransparentFX

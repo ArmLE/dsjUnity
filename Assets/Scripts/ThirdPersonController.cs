@@ -135,6 +135,10 @@ namespace StarterAssets
             {
                 PlayerDeath();
             }
+            if (other.CompareTag("npc3") )
+            {
+                PlayerDeath();
+            }
             // Verifica si el jugador toca un objeto con el tag "Coin"
             else if (other.CompareTag("Coin"))
             {
