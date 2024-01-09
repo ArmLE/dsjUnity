@@ -139,6 +139,18 @@ namespace StarterAssets
             {
                 PlayerDeath();
             }
+            if (other.CompareTag("cono") )
+            {
+                PlayerDeath();
+            }
+            if (other.CompareTag("cono2") )
+            {
+                PlayerDeath();
+            }
+            if (other.CompareTag("Next") )
+            {
+                SceneManager.LoadScene("Nivel4");
+            }
             // Verifica si el jugador toca un objeto con el tag "Coin"
             else if (other.CompareTag("Coin"))
             {

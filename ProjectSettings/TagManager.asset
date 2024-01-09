@@ -10,6 +10,10 @@ TagManager:
   - Obstacle
   - Coin
   - npc3
+  - npc4
+  - cono
+  - cono2
+  - Next
   layers:
   - Default
   - TransparentFX

@@ -3178,6 +3178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: npc4
       objectReference: {fileID: 0}
+    - target: {fileID: 7168608146805030925, guid: 2c3c97b2b77dfde468fe07c422e025ba, type: 3}
+      propertyPath: m_TagString
+      value: npc4
+      objectReference: {fileID: 0}
     - target: {fileID: 8691612899144337673, guid: 2c3c97b2b77dfde468fe07c422e025ba, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -4298,6 +4302,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5112010528648012778, guid: ebbf3ac220156e244843646b71713c26, type: 3}
       propertyPath: m_Name
+      value: npc3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5112010528648012778, guid: ebbf3ac220156e244843646b71713c26, type: 3}
+      propertyPath: m_TagString
       value: npc3
       objectReference: {fileID: 0}
     - target: {fileID: 5190777790138430077, guid: ebbf3ac220156e244843646b71713c26, type: 3}
